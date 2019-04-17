@@ -105,7 +105,7 @@ FCM.deleteNotificationChannel = (channel) => {
 FCM.presentLocalNotification = (details) => {
   details.id = details.id || new Date().getTime().toString();
   details.local_notification = true;
-  RNFIRMessaging.presentLocalNotification(details);
+  return RNFIRMessaging.presentLocalNotification(details);
 };
 
 FCM.scheduleLocalNotification = function(details) {
@@ -113,7 +113,7 @@ FCM.scheduleLocalNotification = function(details) {
     throw new Error('id is required for scheduled notification');
   }
   details.local_notification = true;
-  RNFIRMessaging.scheduleLocalNotification(details);
+  return RNFIRMessaging.scheduleLocalNotification(details);
 };
 
 FCM.getScheduledLocalNotifications = function() {
@@ -124,26 +124,26 @@ FCM.cancelLocalNotification = (notificationID) => {
   if (!notificationID) {
     return;
   }
-  RNFIRMessaging.cancelLocalNotification(notificationID);
+  return RNFIRMessaging.cancelLocalNotification(notificationID);
 };
 
 FCM.cancelAllLocalNotifications = () => {
-  RNFIRMessaging.cancelAllLocalNotifications();
+  return RNFIRMessaging.cancelAllLocalNotifications();
 };
 
 FCM.removeDeliveredNotification = (notificationID) => {
   if (!notificationID) {
     return;
   }
-  RNFIRMessaging.removeDeliveredNotification(notificationID);
+  return RNFIRMessaging.removeDeliveredNotification(notificationID);
 };
 
 FCM.removeAllDeliveredNotifications = () => {
-  RNFIRMessaging.removeAllDeliveredNotifications();
+  return RNFIRMessaging.removeAllDeliveredNotifications();
 };
 
 FCM.setBadgeNumber = (number) => {
-  RNFIRMessaging.setBadgeNumber(number);
+  return RNFIRMessaging.setBadgeNumber(number);
 };
 
 FCM.getBadgeNumber = () => {
@@ -203,20 +203,20 @@ FCM.on = (event, callback) => {
 };
 
 FCM.subscribeToTopic = (topic) => {
-  RNFIRMessaging.subscribeToTopic(topic);
+  return RNFIRMessaging.subscribeToTopic(topic);
 };
 
 FCM.unsubscribeFromTopic = (topic) => {
-  RNFIRMessaging.unsubscribeFromTopic(topic);
+  return RNFIRMessaging.unsubscribeFromTopic(topic);
 };
 
 FCM.send = (senderId, payload) => {
-  RNFIRMessaging.send(senderId, payload);
+  return RNFIRMessaging.send(senderId, payload);
 };
 
 FCM.setNotificationCategories = (categories) => {
   if (Platform.OS === 'ios') {
-    RNFIRMessaging.setNotificationCategories(categories);
+    return RNFIRMessaging.setNotificationCategories(categories);
   }
 }
 
